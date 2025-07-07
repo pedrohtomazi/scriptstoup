@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixitfy Craft</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="prefetch" href="/ui/assets/img/craftbook.png">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="progress" style="display: none;">
+            <img src="/assets/img/items/bluebox.png" id="progressbar-img">
+            <div id="progressbar-text">Blue Box Crafting...</div>
+            <div id="progress-bar">
+                <div id="progress-fill"></div>
+            </div>
+        </div>
+        <div class="craftbook">
+            <div class="craft-order-container">
+                <div class="order-box">
+                    <div class="order-png"></div>
+                    <span class="order-title">Navy Revolver</span>
+                    <span class="order-time">
+                        <iconify-icon id="order-time-icon" icon="zondicons:hour-glass"></iconify-icon>
+                        <span id="order-time">20:00</span>
+                    </span>
+                    <span class="order-exp">30 Exp</span>
+                    <span class="order-count">
+                        <iconify-icon id="ordercount-icon" icon="ic:baseline-discount"></iconify-icon>
+                        5x
+                    </span>
+                    <iconify-icon id="order-wait" icon="medical-icon:i-waiting-area"></iconify-icon>
+                </div>
+                <div class="order-box">
+                    <div class="order-png"></div>
+                    <span class="order-title">Navy Revolver</span>
+                    <span class="order-time">
+                        <iconify-icon id="order-time-icon" icon="zondicons:hour-glass"></iconify-icon>
+                        <span id="order-time">20:00</span>
+                    </span>
+                    <span class="order-exp">30 Exp</span>
+                    <span class="order-count">
+                        <iconify-icon id="ordercount-icon" icon="ic:baseline-discount"></iconify-icon>
+                        5x
+                    </span>
+                    <iconify-icon id="order-finish" icon="line-md:confirm-square"></iconify-icon>
+                </div>
+            </div>
+            <div class="homepage"></div>
+            <div class="player-desc">
+                <input class="craftorder-btn" type="button" data-label ="" value="CRAFT ORDER"/>
+                <div id="player-name">ARTHUR MORGAN</div>
+                <div class="progressbar-home">
+                    <span class="player-lvl-home">Level 4</span>
+                    <span class="progress-exp-home">80/100</span>
+                    <div class="progressbarhome" role="progressbar-home" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="--value: 95"></div>
+                </div>
+                <div class="total-production">
+                    <p class="total-title">Total Production</p>
+                    <p class="total-amount">12</p>
+                </div>
+            </div>
+            <div class="take-input">
+                <input type="text" name="money" id="take-input" placeholder="How many will you take?">
+                <div class="take-btn">TAKE</div>
+            </div>
+            <div id="categories-title">CATEGORIES</div>
+            <div class="categories">
+                <div class="categorie-box">
+                    <div class="categorie-image"></div>
+                    <p class="categorie-name">Weapons</p>
+                    <p class="categorie-items">6</p>
+                </div>
+                <div class="categorie-box">
+                    <div class="categorie-image"></div>
+                    <p class="categorie-name">Tools</p>
+                    <p class="categorie-items">3</p>
+                </div>
+                <div class="categorie-box">
+                    <div class="categorie-image"></div>
+                    <p class="categorie-name">Food</p>
+                    <p class="categorie-items">5</p>
+                </div>
+            </div>    
+            <!-- <input class="closebtn" type="button" value="CLOSE" id="close"/> -->
+        </div>
+        <div class="craft-page">
+            <div class="craft-container">
+                <span class="title-1">ITEMS</span>
+                <div class="items-container">
+                    <div class="craft-items">
+                        <div class="craft-items-png"></div>
+                        <span class="craft-items-name">Gold Bar</span>
+                        <span class="craft-items-lvl">Level 2</span>
+                        <span class="craft-items-time">04:00</span>
+                        <span class="craft-items-exp">15 EXP</span>
+                        <span class="craft-items-count">5x</span>
+                
+                    </div>
+                </div>
+                <span class="title-2">Crafting</span>
+                <div class="craft-items-pngbox"></div>
+                <span class="title-3">Materials</span>
+                <div class="craft-items-materials">
+                    <div class="materials-box">Gold Nugget x5 (45)</div>
+                </div>
+                <div class="item-description">
+                    <span id="selectitems-lvl" class="craft-items-lvl">Level 2</span>
+                    <span id="selectitems-time" class="craft-items-time">04:00</span>
+                    <span id="selectitems-exp" class="craft-items-exp">15 EXP</span>
+                    <span id="selectitems-count" class="craft-items-count">5x</span>
+                </div>
+                <input type="number" name="count" class="iteminputcount" id="inputcount" min="1" max="99" value="1" placeholder="Craft count?">
+
+                <input class="start-item-craft" type="button" data-label ="" value="CRAFT"/>
+            </div>
+        </div>
+        <div class="categorie-weapons">
+            <div class="melee">
+                <img id="melee-img" src="/ui/assets/img/guns/melee.png" alt="" srcset="">
+                <span class="weapons-name">Melee</span>
+            </div>
+            
+            <div class="bow">
+                <img id="bow-img" src="/ui/assets/img/guns/bow.png" alt="" srcset="">
+                <span class="weapons-name">Bow</span>
+            </div>
+            <div class="misc">
+                <img id="misc-img" src="/ui/assets/img/guns/misc.png" alt="" srcset="">
+                <span class="weapons-name">Misc</span>
+            </div>
+            <div class="throwable">
+                <img id="throwable-img" src="/ui/assets/img/guns/throwable.png" alt="" srcset="">
+                <span class="weapons-name">Throwable</span>
+            </div>
+            <div class="shotgun">
+                <img id="shotgun-img" src="/ui/assets/img/guns/shotgun.png" alt="" srcset="">
+                <span class="weapons-name">Shotgun</span>
+            </div>
+            <div class="revolver">
+                <img id="revolver-img" src="/ui/assets/img/guns/cattleman.png" alt="" srcset="">
+                <span class="weapons-name">Revolver</span>
+            </div>
+            <div class="pistol">
+                <img id="pistol-img" src="/ui/assets/img/guns/volcanic-pistol.png" alt="" srcset="">
+                <span class="weapons-name">Pistol</span>
+            </div>
+            <div class="repeaters">
+                <img id="repeaters-img" src="/ui/assets/img/guns/repeater.png" alt="" srcset="">
+                <span class="repeaters-name">Repeater</span>
+            </div>
+            <div class="rifle">
+                <img id="rifle-img" src="/ui/assets/img/guns/rifle.png" alt="" srcset="">
+                <span class="repeaters-name">Rifle</span>
+            </div>
+            <div class="weapon-craft">
+                <div class="weaponname">
+                    Sniper Rifle Carcano
+                    <span class="lvlcheck cancel"></span>
+                    <span class="lvlcheck confirm"></span>
+                </div>
+                <div class="weaponpng"></div>
+                <input class="value-left" type="button" data-label ="" value=""/>
+                <input class="value-right" type="button" data-label ="" value=""/>
+                <span class="title-4">Materials</span>
+                <div class="craft-weapon-materials">
+                    <div class="materials-box">Silver Bar x5 (35)</div>
+                </div>
+                <div class="weapon-description">
+                    <span id="selectweapon-lvl" class="craft-items-lvl">Level 2</span>
+                    <span id="selectweapon-time" class="craft-items-time">04:00</span>
+                    <span id="selectweapon-exp" class="craft-items-exp">15 EXP</span>
+                    <span id="selectweapon-count" class="craft-items-count">5x</span>
+             
+                </div>
+                <input type="number" name="count" class="weaponinputcount" id="inputcount" value="1" min="1" max="99">
+
+                <input class="start-craft" type="button" data-label ="" value="CRAFT"/>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="assets/main.js" type="text/javascript"></script>   
+</html>
