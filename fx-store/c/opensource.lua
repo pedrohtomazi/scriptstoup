@@ -1,0 +1,29 @@
+-- RegisterNetEvent("fx-store:custom1", function()
+--     local store1 = {
+--         image = "https://cdn.discordapp.com/attachments/1159290734835400824/1168319936234528879/final.png",
+--         SellItems = { 
+--             {itemName = "water",itemLabel = "Water",price = 1},
+--         },
+--         BuyItems = {
+--             {itemName = "water",itemLabel = "Water",price = 1},
+--         }
+--     }
+--     TriggerEvent("fx-store:CustomInteraction", store1)
+-- end)
+
+-- RegisterCommand("custom1", function()
+--     local store1 = {
+--         image = "/ui/img/store.png",
+--         SellItems = {
+--             {itemName = "man_idcard",itemLabel = "Man ID Card",price = 1},
+--             {itemName = "doorkey",itemLabel = "Doorkey",price = 1},
+--             {itemName = "bread",itemLabel = "bread",price = 1},
+--         },                                               -- ## this feature switches off automatically if there is no data input. Close SellItems Store
+--         BuyItems = {
+--             {itemName = "man_idcard",itemLabel = "Man ID Card",price = 1},
+--             {itemName = "doorkey",itemLabel = "Doorkey",price = 1},
+--             {itemName = "bread",itemLabel = "bread",price = 1},
+--         }
+--     }
+--     TriggerEvent("fx-store:CustomInteraction", store1)
+-- end)
