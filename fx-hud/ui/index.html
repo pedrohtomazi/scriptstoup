@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixitfy Hud</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="ui-panel" style="display: none;">
+            <div class="ui-box">
+                <div class="border1"></div>
+                <div class="border2"></div>
+                <div class="border3"></div>
+                <div class="border4"></div>
+                <button id="close-btn" type="button">
+                    <iconify-icon icon="majesticons:door-exit"></iconify-icon>
+                </button>
+                <div class="navbar">
+                    <span class="navbar-title">
+                        <iconify-icon id="navbar-title-icon" icon="gala:settings"></iconify-icon>
+                        Settings
+                    </span>
+                    <div class="navbar-buttons">
+                        <div id="home-btn">
+                            <iconify-icon id="navbar-btn-icon" icon="line-md:home-md"></iconify-icon>
+                            <span class="btn-title">HOME</span>
+                        </div>
+                        <div id="hud-color-btn">
+                            <iconify-icon id="navbar-btn-icon"
+                                icon="material-symbols:format-color-fill-sharp"></iconify-icon>
+                            <span class="btn-title">COLOR</span>
+                        </div>
+
+                        <div id="hud-setting-btn">
+                            <iconify-icon id="navbar-btn-icon" icon="fluent:slide-size-24-regular"></iconify-icon>
+                            <span class="btn-title">HUD SIZE</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hud-settings" style="display: none;">
+                    <div class="health-setting">
+                        <span class="health-text">HEALTH</span>
+                        <span class="color1-title">Color 1</span>
+                        <input type="color" id="color-1" name="head" value="#d2d6d3" data-type="health1" />
+                        <span class="color2-title">Color 2</span>
+                        <input type="color" id="color-2" name="head" value="#d2d6d3" data-type="health2" />
+                    </div>
+                    <div class="stamina-setting">
+                        <span class="health-text">STAMINA</span>
+                        <span class="color1-title">Color 1</span>
+                        <input type="color" id="color-1" name="head" value="#d2d6d3" data-type="stamina1" />
+                        <span class="color2-title">Color 2</span>
+                        <input type="color" id="color-2" name="head" value="#d2d6d3" data-type="stamina2" />
+                    </div>
+                    <div class="hungry-setting">
+                        <span class="health-text">HUNGRY</span>
+                        <span class="color1-title">Color 1</span>
+                        <input type="color" id="color-1" name="head" value="#d2d6d3" data-type="hungry1" />
+                        <span class="color2-title">Color 2</span>
+                        <input type="color" id="color-2" name="head" value="#d2d6d3" data-type="hungry2" />
+                    </div>
+                    <div class="thirst-setting">
+                        <span class="health-text">THIRST</span>
+                        <span class="color1-title">Color 1</span>
+                        <input type="color" id="color-1" name="head" value="#d2d6d3" data-type="thirst1" />
+                        <span class="color2-title">Color 2</span>
+                        <input type="color" id="color-2" name="head" value="#d2d6d3" data-type="thirst2" />
+                    </div>
+                    <div class="stress-setting">
+                        <span class="health-text">STRESS</span>
+                        <span class="color1-title">Color 1</span>
+                        <input type="color" id="color-1" name="head" value="#d2d6d3" data-type="stress1" />
+                        <span class="color2-title">Color 2</span>
+                        <input type="color" id="color-2" name="head" value="#d2d6d3" data-type="stress2" />
+                    </div>
+                    <div class="dirty-setting">
+                        <span class="health-text">DIRTY</span>
+                        <span class="color1-title">Color 1</span>
+                        <input type="color" id="color-1" name="head" value="#d2d6d3" data-type="dirty1" />
+                        <span class="color2-title">Color 2</span>
+                        <input type="color" id="color-2" name="head" value="#d2d6d3" data-type="dirty2" />
+                    </div>
+                    <div class="microphone-setting">
+                        <span class="health-text">MIC</span>
+                        <span class="color1-title">Color 1</span>
+                        <input type="color" id="color-1" name="head" value="#d2d6d3" data-type="microphone1" />
+                        <span class="color2-title">Color 2</span>
+                        <input type="color" id="color-2" name="head" value="#d2d6d3" data-type="microphone2" />
+                    </div>
+                    <div class="temp-setting">
+                        <span class="health-text">TEMP</span>
+                        <span class="color1-title">Color 1</span>
+                        <input type="color" id="color-1" name="head" value="#d2d6d3" data-type="temp1" />
+                        <span class="color2-title">Color 2</span>
+                        <input type="color" id="color-2" name="head" value="#d2d6d3" data-type="temp2" />
+                    </div>
+                    <div class="onesync-setting">
+                        <span class="health-text">PLAYERS</span>
+                        <span class="color1-title">Color 1</span>
+                        <input type="color" id="color-1" name="head" value="#d2d6d3" data-type="onesync1" />
+                        <span class="color2-title">Color 2</span>
+                        <input type="color" id="color-2" name="head" value="#d2d6d3" data-type="onesync2" />
+                    </div>
+                    <div class="alcohol-setting">
+                        <span class="health-text">alcohol</span>
+                        <span class="color1-title">Color</span>
+                        <input type="color" id="color-1" name="head" value="#d2d6d3" data-type="alcohol1" />
+                        <span class="color2-title">Color 2</span>
+                        <input type="color" id="color-2" name="head" value="#d2d6d3" data-type="alcohol2" />
+                    </div>
+                    <div class="horse-health-setting">
+                        <span class="health-text">HORSE</span>
+                        <span class="color1-title">Color 1</span>
+                        <input type="color" id="color-1" name="head" value="#d2d6d3" data-type="horse-health1" />
+                        <span class="color2-title">Color 2</span>
+                        <input type="color" id="color-2" name="head" value="#d2d6d3" data-type="horse-health2" />
+                    </div>
+                    <div class="horse-stamina-setting">
+                        <span class="health-text">HORSE S.</span>
+                        <span class="color1-title">Color 1</span>
+                        <input type="color" id="color-1" name="head" value="#d2d6d3" data-type="horse-stamina1" />
+                        <span class="color2-title">Color 2</span>
+                        <input type="color" id="color-2" name="head" value="#d2d6d3" data-type="horse-stamina2" />
+                    </div>
+                    <div class="level-progress">
+                        <span class="health-text">LEVEL BAR</span>
+                        <span class="color1-title">Color 1</span>
+                        <input type="color" id="color-1" name="head" value="#d2d6d3" data-type="level1" />
+                        <span class="color2-title">Color 2</span>
+                        <input type="color" id="color-2" name="head" value="#d2d6d3" data-type="level2" />
+                    </div>
+                    <div class="hour-setting">
+                        <span class="health-text">HOUR</span>
+                        <span class="color1-title">Color 1</span>
+                        <input type="color" id="color-1" name="head" value="#d2d6d3" data-type="hour1" />
+                        <span class="color2-title">Color 2</span>
+                        <input type="color" id="color-2" name="head" value="#d2d6d3" data-type="hour2" />
+                    </div>
+                    <div class="cash-setting">
+                        <span class="health-text">CASH</span>
+                        <span class="color1-title">Color 1</span>
+                        <input type="color" id="color-1" name="head" value="#d2d6d3" data-type="cash1" />
+                        <span class="color2-title">Color 2</span>
+                        <input type="color" id="color-2" name="head" value="#d2d6d3" data-type="cash2" />
+                    </div>
+                    <div class="gold-setting">
+                        <span class="health-text">GOLD</span>
+                        <span class="color1-title">Color 1</span>
+                        <input type="color" id="color-1" name="head" value="#d2d6d3" data-type="gold1" />
+                        <span class="color2-title">Color 2</span>
+                        <input type="color" id="color-2" name="head" value="#d2d6d3" data-type="gold2" />
+                    </div>
+                    <div class="id-setting">
+                        <span class="health-text">ID</span>
+                        <span class="color1-title">Color</span>
+                        <input type="color" id="color-1" name="head" value="#d2d6d3" data-type="id1" />
+                        <span class="color2-title">Color 2</span>
+                        <input type="color" id="color-2" name="head" value="#d2d6d3" data-type="id2" />
+                    </div>
+                </div>
+                <div class="hud-size-container" style="display: none;">
+                    <h1 class="size-title">Hud Sizing</h1>
+                    <div class="hud-widht">
+                        <span class="sizing-title">WIDHT</span>
+                        <iconify-icon id="down-value" icon="bxs:minus-square"></iconify-icon>
+                        <input type="number" name="" id="widht-value" value="2.2">
+                        <iconify-icon id="up-value" icon="f7:plus-app-fill"></iconify-icon>
+                    </div>
+                    <div class="hud-height">
+                        <span class="sizing-title">HEIGHT</span>
+                        <iconify-icon id="down-value" icon="bxs:minus-square"></iconify-icon>
+                        <input type="number" name="" id="height-value" value="3.7">
+                        <iconify-icon id="up-value" icon="f7:plus-app-fill"></iconify-icon>
+                    </div>
+                    <div class="hud-radius">
+                        <span class="sizing-title">RADIUS %</span>
+                        <iconify-icon id="down-value" icon="bxs:minus-square"></iconify-icon>
+                        <input type="number" name="" id="radius-value" value="50">
+                        <iconify-icon id="up-value" icon="f7:plus-app-fill"></iconify-icon>
+                    </div>
+                    <div class="hud-icon">
+                        <span class="sizing-title">ICON</span>
+                        <iconify-icon id="down-value" icon="bxs:minus-square"></iconify-icon>
+                        <input type="number" name="" id="icon-value" value="1.7">
+                        <iconify-icon id="up-value" icon="f7:plus-app-fill"></iconify-icon>
+                    </div>
+                    <div class="level-widht">
+                        <span class="sizing-title">LVL WIDHT</span>
+                        <iconify-icon id="down-value" icon="bxs:minus-square"></iconify-icon>
+                        <input type="number" name="" id="level-widht-value" value="15.0">
+                        <iconify-icon id="up-value" icon="f7:plus-app-fill"></iconify-icon>
+                    </div>
+                    <div class="level-height">
+                        <span class="sizing-title">LVL HEIGHT</span>
+                        <iconify-icon id="down-value" icon="bxs:minus-square"></iconify-icon>
+                        <input type="number" name="" id="level-height-value" value="5.0">
+                        <iconify-icon id="up-value" icon="f7:plus-app-fill"></iconify-icon>
+                    </div>
+                    <div class="level-fontsize">
+                        <span class="sizing-title">LVL FONT SIZE</span>
+                        <iconify-icon id="down-value" icon="bxs:minus-square"></iconify-icon>
+                        <input type="number" name="" id="level-fontsize-value" value="1.0">
+                        <iconify-icon id="up-value" icon="f7:plus-app-fill"></iconify-icon>
+                    </div>
+                    <div class="level-logo">
+                        <span class="sizing-title">LOGO SIZE</span>
+                        <iconify-icon id="down-value" icon="bxs:minus-square"></iconify-icon>
+                        <input type="number" name="" id="level-logo-value" value="5.0">
+                        <iconify-icon id="up-value" icon="f7:plus-app-fill"></iconify-icon>
+                    </div>
+                </div>
+                <div class="home-container" style="display: none;">
+                    <h1 class="home-title">Reset Hud</h1>
+                    <button id="default-btn">Default</button>
+                    <!-- <button id="left-preset-btn">LEFT</button>
+                    <button id="right-preset-btn">RIGHT</button> -->
+                    <h1 class="onof-title">SHOW/HIDE</h1>
+                    <div class="showhide-container">
+                        <div class="showhide-box">
+                            <div class="showhide-title">HEALTH</div>
+                            <label class="switch">
+                                <input class="checkboxhealth" type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="showhide-box">
+                            <div class="showhide-title">STAMINA</div>
+                            <label class="switch">
+                                <input class="checkboxstamina" type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="showhide-box">
+                            <div class="showhide-title">HUNGRY</div>
+                            <label class="switch">
+                                <input class="checkboxhungry" type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="showhide-box">
+                            <div class="showhide-title">THRIST</div>
+                            <label class="switch">
+                                <input class="checkboxthirst" type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="showhide-box">
+                            <div class="showhide-title">STRESS</div>
+                            <label class="switch">
+                                <input class="checkboxstress" type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="showhide-box">
+                            <div class="showhide-title">DIRTY</div>
+                            <label class="switch">
+                                <input class="checkboxdirty" type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="showhide-box">
+                            <div class="showhide-title">MIC</div>
+                            <label class="switch">
+                                <input class="checkboxmic" type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="showhide-box">
+                            <div class="showhide-title">TEMP</div>
+                            <label class="switch">
+                                <input class="checkboxtemp" type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="showhide-box">
+                            <div class="showhide-title">ONESYNC</div>
+                            <label class="switch">
+                                <input class="checkboxonesync" type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="showhide-box">
+                            <div class="showhide-title">alcohol</div>
+                            <label class="switch">
+                                <input class="checkboxalcohol" type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="showhide-box">
+                            <div class="showhide-title">LEVEL</div>
+                            <label class="switch">
+                                <input class="checkboxlevel" type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="showhide-box">
+                            <div class="showhide-title">HOUR</div>
+                            <label class="switch">
+                                <input class="checkboxhour" type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="showhide-box">
+                            <div class="showhide-title">CASH</div>
+                            <label class="switch">
+                                <input class="checkboxcash" type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="showhide-box">
+                            <div class="showhide-title">GOLD</div>
+                            <label class="switch">
+                                <input class="checkboxgold" type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="showhide-box">
+                            <div class="showhide-title">ID</div>
+                            <label class="switch">
+                                <input class="checkboxid" type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- NOTIFY -->
+        <div class="notify-container">
+            <!-- <div class="notify">
+                <span class="notify-title">Error</span>
+                <span class="notify-desc">This notification system is designed to be responsiveThis notification system is designed to be responsiveThis notification system is designed to be responsiveThis notification system is designed to be responsiveThis notification system is designed to be responsiveThis notification system is designed to be responsiveThis notification system is designed to be responsiveThis notification system is designed to be responsiveThis notification system is designed to be responsiveThis notification system is designed to be responsiveThis notification system is designed to be responsiveThis notification system is designed to be responsiveThis notification system is designed to be responsiveThis notification system is designed to be responsiveThis notification system is designed to be responsiveThis notification system is designed to be responsive !</span>
+                <div class="notify-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                </div>
+                <img id="notify-img" src="/assets/img/cancel.png" alt="" srcset="">
+            </div>
+            <div class="notify">
+                <span class="notify-title">Information</span>
+                <span class="notify-desc">This notification system is designed to be responsive !</span>
+                <div class="notify-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                </div>
+                <img id="notify-img" src="/assets/img/info.png" alt="" srcset="">
+            </div>
+            <div class="notify">
+                <span class="notify-title">Warning</span>
+                <span class="notify-desc">This notification system is designed to be responsive !</span>
+                <div class="notify-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                </div>
+                <img id="warning-img" src="/assets/img/warning.png" alt="" srcset="">
+            </div>  -->
+        </div>
+        
+
+        <!-- useItemText -->
+        <div class="use-text">
+
+            <!-- <div class="usevalue">20</div> -->
+
+        </div>
+
+        <!-- HUDS -->
+
+        <div class="showvoicerange">
+            <iconify-icon id="range-icon" icon="mingcute:voice-line"></iconify-icon>
+            <span class="voice-range"></span>
+        </div>   
+        <div class="health">
+            <svg class="progress-svg" viewBox="0 0 100 100">
+              <circle class="background-circle" cx="50" cy="50" r="45" />
+              <circle class="progress-bg" cx="50" cy="50" r="45" />
+              <circle class="progress-circle" cx="50" cy="50" r="45" />
+            </svg>
+            <iconify-icon id="icon" icon="mdi:heart"></iconify-icon>
+        </div>     
+        <div class="stamina">
+            <svg class="progress-svg" viewBox="0 0 100 100">
+              <circle class="background-circle" cx="50" cy="50" r="45" />
+              <circle class="progress-bg" cx="50" cy="50" r="45" />
+              <circle class="progress-circle" cx="50" cy="50" r="45" />
+            </svg>
+            <iconify-icon id="icon" icon="ant-design:thunderbolt-filled"></iconify-icon>
+        </div>  
+        <div class="hungry">
+            <svg class="progress-svg" viewBox="0 0 100 100">
+              <circle class="background-circle" cx="50" cy="50" r="45" />
+              <circle class="progress-bg" cx="50" cy="50" r="45" />
+              <circle class="progress-circle" cx="50" cy="50" r="45" />
+            </svg>
+            <iconify-icon id="icon" icon="mdi:cutlery-fork-knife"></iconify-icon>
+        </div>  
+        <div class="thirst">
+          <svg class="progress-svg" viewBox="0 0 100 100">
+            <circle class="background-circle" cx="50" cy="50" r="45" />
+            <circle class="progress-bg" cx="50" cy="50" r="45" />
+            <circle class="progress-circle" cx="50" cy="50" r="45" />
+          </svg>
+          <iconify-icon id="icon" icon="solar:bottle-bold"></iconify-icon>
+        </div>
+        
+        <div class="stress">
+          <svg class="progress-svg" viewBox="0 0 100 100">
+            <circle class="background-circle" cx="50" cy="50" r="45" />
+            <circle class="progress-bg" cx="50" cy="50" r="45" />
+            <circle class="progress-circle" cx="50" cy="50" r="45" />
+          </svg>
+          <iconify-icon id="icon" icon="game-icons:brainstorm"></iconify-icon>
+        </div>
+        
+        <div class="dirty">
+          <svg class="progress-svg" viewBox="0 0 100 100">
+            <circle class="background-circle" cx="50" cy="50" r="45" />
+            <circle class="progress-bg" cx="50" cy="50" r="45" />
+            <circle class="progress-circle" cx="50" cy="50" r="45" />
+          </svg>
+          <iconify-icon id="icon" icon="majesticons:bath-shower"></iconify-icon>
+        </div>
+        
+        <div class="microphone">
+          <svg class="progress-svg" viewBox="0 0 100 100">
+            <circle class="background-circle" cx="50" cy="50" r="45" />
+            <circle class="progress-bg" cx="50" cy="50" r="45" />
+            <circle class="progress-circle" cx="50" cy="50" r="45" />
+          </svg>
+          <iconify-icon id="icon" icon="mingcute:voice-fill"></iconify-icon>
+        </div>
+        
+        <div class="temp">
+          <svg class="progress-svg" viewBox="0 0 100 100">
+            <circle class="background-circle" cx="50" cy="50" r="45" />
+            <circle class="progress-bg" cx="50" cy="50" r="45" />
+            <circle class="progress-circle" cx="50" cy="50" r="45" />
+          </svg>
+          <span class="temp-value">22°</span>
+        </div>
+        
+        <div class="onesync">
+          <svg class="progress-svg" viewBox="0 0 100 100">
+            <circle class="background-circle" cx="50" cy="50" r="45" />
+            <circle class="progress-bg" cx="50" cy="50" r="45" />
+            <circle class="progress-circle" cx="50" cy="50" r="45" />
+          </svg>
+          <iconify-icon id="icon" icon="game-icons:targeting"></iconify-icon>
+        </div>
+        
+        <div class="alcohol">
+          <svg class="progress-svg" viewBox="0 0 100 100">
+            <circle class="background-circle" cx="50" cy="50" r="45" />
+            <circle class="progress-bg" cx="50" cy="50" r="45" />
+            <circle class="progress-circle" cx="50" cy="50" r="45" />
+          </svg>
+          <iconify-icon id="icon" icon="game-icons:beer-bottle"></iconify-icon>
+        </div>
+        
+        <div class="horse-health">
+          <svg class="progress-svg" viewBox="0 0 100 100">
+            <circle class="background-circle" cx="50" cy="50" r="45" />
+            <circle class="progress-bg" cx="50" cy="50" r="45" />
+            <circle class="progress-circle" cx="50" cy="50" r="45" />
+          </svg>
+          <iconify-icon id="icon" icon="mdi:horse"></iconify-icon>
+          <span class="horse-bounding health-bounding">1</span>
+        </div>
+        
+        <div class="horse-stamina">
+          <svg class="progress-svg" viewBox="0 0 100 100">
+            <circle class="background-circle" cx="50" cy="50" r="45" />
+            <circle class="progress-bg" cx="50" cy="50" r="45" />
+            <circle class="progress-circle" cx="50" cy="50" r="45" />
+          </svg>
+          <iconify-icon id="icon" icon="mdi:horseshoe"></iconify-icon>
+          <span class="horse-bounding stamina-bounding">1</span>
+        </div>
+        
+        <!-- PLAYER STAT -->
+        <div class="cash" style="display: none;">
+            <span class="cash-value">8985.75</span>
+            <iconify-icon id="cash-icon" icon="streamline:subscription-cashflow-solid"></iconify-icon>
+        </div>
+        <div class="gold" style="display: none;">
+            <span class="gold-value">0.0</span>
+            <iconify-icon id="gold-icon" icon="mdi:gold"></iconify-icon>
+        </div>
+        <div class="id" style="display: none;">
+            <span class="id-text">78</span>
+            <iconify-icon id="id-icon" icon="fa-solid:hat-cowboy"></iconify-icon>
+        </div>
+        <div class="level" style="display: none;">
+            <span class="level-text levelx">LVL 5</span>
+            <span class="level-xp levelx">800/1000</span>
+            <div class="level-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="server-logo" style="display: none;">
+            <img id="server-logo" src="/ui/assets/img/server-logo.png" alt="" srcset="">
+        </div>
+        <div class="hour" style="display: none;">
+            <span class="hour-text">14:20</span>
+            <iconify-icon id="hour-icon" icon="game-icons:clockwork"></iconify-icon>
+        </div>
+    </div>
+</body>
+<script src="assets/main.js" type="text/javascript"></script>
+
+</html>
